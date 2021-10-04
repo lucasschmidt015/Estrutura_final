@@ -28,13 +28,29 @@ int menu(){
 }
 
 int verificador(body estrutura, int codigo){
-    body *aux;
-    
+    bebida *aux;
+    for(aux=estrutura.first;aux!=NULL;aux=aux->next){
+        if(aux->codigo==codigo){
+            return 1;
+        }else if(aux->next!=codigo&&aux!=NULL){
+            continue;
+        }else{
+            return 0;
+        }
+    }
 }
 
 bebida *nova_bebida(body estrutura){
     bebida *cadastro;
+    int ver;
     cadastro=(bebida *)malloc(sizeof(bebida));
     printf("Digite o codigo da Bebida:\n");
     scanf("%d",cadastro->codigo);
+    ver = verificador(estrutura,cadastro->codigo);
+    while(ver!=1){
+        printf("Codigo ja cadastrado, tente novamente\n");
+        scanf("%d",cadastro->codigo);
+        ver = verificador(estrutura,cadastro->codigo);
+    }
+    
 }
