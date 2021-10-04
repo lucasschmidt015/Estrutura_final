@@ -52,8 +52,9 @@ bebida *nova_bebida(body estrutura){
         scanf("%d",cadastro->codigo);
         ver = verificador(estrutura,cadastro->codigo);
     }
-    
+    printf("Digite o nome da bebida:\n");   
 }
+
 
 void print_bebida(body aux)
 {
