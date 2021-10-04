@@ -27,6 +27,14 @@ int menu(){
     return menu1;
 }
 
-body cad_bebidas(body *first){
+int verificador(body estrutura, int codigo){
     body *aux;
+    
+}
+
+bebida *nova_bebida(body estrutura){
+    bebida *cadastro;
+    cadastro=(bebida *)malloc(sizeof(bebida));
+    printf("Digite o codigo da Bebida:\n");
+    scanf("%d",cadastro->codigo);
 }
