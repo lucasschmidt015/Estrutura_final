@@ -27,8 +27,19 @@ int menu(){
     return menu1;
 }
 
+int vazio(body estrutura){
+    if(estrutura.first==NULL){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 int verificador(body estrutura, int codigo){
     bebida *aux;
+    if(vazio(estrutura)){
+        return 2;
+    }
     for(aux=estrutura.first;aux!=NULL;aux=aux->next){
         if(aux->codigo==codigo){
             return 1;
@@ -38,6 +49,7 @@ int verificador(body estrutura, int codigo){
             return 0;
         }
     }
+    return 0;
 }
 
 bebida *nova_bebida(body estrutura){
