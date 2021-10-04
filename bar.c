@@ -4,12 +4,37 @@
 #include "Bodega.h"
 
 
+
 int main(){
-    head pointers;
+    body beritas;
     int menu1;
-    pointers.first=NULL;
-    pointers.last=NULL;
+    beritas.first=NULL;
+    beritas.last=NULL;
+    printf("=================================================================================\n");
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-BEM VINDO A ESSA BODEGA-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    menu1 = menu();
+    printf("=================================================================================\n");
+    while (menu1!=7)
+    {
+        menu1 = menu(); 
+        switch (menu1)
+        {
+        case 1:
+            break;
+        case 2:
+            print_bebida(beritas);
+            break;    
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;    
+        case 6:
+            break;
+        default:
+            break;
+        }
+    }
+    
     return 0;
 }
