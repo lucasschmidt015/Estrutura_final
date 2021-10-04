@@ -54,3 +54,12 @@ bebida *nova_bebida(body estrutura){
     }
     
 }
+
+void print_bebida(body aux)
+{
+    bebida *i;
+    for(i=aux.first;i!=NULL;i = i->next)
+    {
+        printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n");
+    }
+}
