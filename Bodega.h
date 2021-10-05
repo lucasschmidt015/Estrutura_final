@@ -28,7 +28,7 @@ int menu(){
 }
 
 int vazio(body estrutura){
-    if(estrutura.first==NULL){
+    if(estrutura.first==NULL){          //Função que verifica se a lista está vazia
         return 1;
     }else{
         return 0;
@@ -37,7 +37,7 @@ int vazio(body estrutura){
 
 int verificador(body estrutura, int codigo){
     bebida *aux;
-    for(aux=estrutura.first;aux!=NULL;aux=aux->next){
+    for(aux=estrutura.first;aux!=NULL;aux=aux->next){       //Função que verifica se o codigo que o usuario está digitando já está na lista
         if(aux->codigo==codigo)
             return 1;
     }
@@ -45,12 +45,12 @@ int verificador(body estrutura, int codigo){
 }
 
 bebida *nova_bebida(body estrutura){
-    bebida *cadastro;
+    bebida *cadastro;                                                    //Função que lê uma nova bebida
     int ver;
     cadastro=(bebida *)malloc(sizeof(bebida));
-    printf("Digite o codigo da Bebida:\n");
+    printf("Digite o codigo da Bebida:\n");                 
     scanf("%d",&cadastro->codigo);
-    ver = verificador(estrutura,cadastro->codigo);
+    ver = verificador(estrutura,cadastro->codigo);              //Chama a função que verifica se o codigo já consta na lista
     while(ver==1){
         printf("Codigo ja cadastrado, tente novamente\n");
         scanf("%d",&cadastro->codigo);
@@ -59,7 +59,7 @@ bebida *nova_bebida(body estrutura){
     printf("Digite o nome da bebida:\n");
     scanf("%s", cadastro->name);
     printf("Digite o volume da Bebida em ml:\n");
-    scanf("%d",&cadastro->volume);
+    scanf("%d",&cadastro->volume);                      //Leitura de dados
     printf("Digite o preco:\n");
     scanf("%lf", &cadastro->preco);
     cadastro->qt_estoque = 0;
@@ -70,7 +70,9 @@ bebida *nova_bebida(body estrutura){
     return cadastro;
 }
 
+body cadastro_bebida(body estrutura){
 
+}
 
 void print_bebida(body aux)
 {
