@@ -89,6 +89,6 @@ void print_bebida(body aux)
     bebida *i;
     for(i=aux.first;i!=NULL;i = i->next)
     {
-        printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n");
+        printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", i->codigo, i->name, i->volume, i->preco, i->qt_estoque, i->alcollico);
     }
 }
