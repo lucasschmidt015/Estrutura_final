@@ -67,7 +67,9 @@ bebida *nova_bebida(body estrutura){
     scanf("%d", &cadastro->alcollico);
     cadastro->next=NULL;
     cadastro->prev=NULL;
+    return cadastro;
 }
+
 
 
 void print_bebida(body aux)
