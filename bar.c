@@ -41,6 +41,7 @@ int main(){
                 comprar_bebida(beritas);
                 break;    
             case 6:
+                vender_bebidas(beritas);
                 break;
             default:
                 break;
