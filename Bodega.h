@@ -84,6 +84,48 @@ body cadastro_bebida(body estrutura){
     return estrutura;
 }
 
+body excluir(body aux)
+{
+    int codigo;
+    if(verificador(aux, codigo))
+    {
+        bebida *i, *prev, *nex;
+        if(aux.first->next == NULL && aux.first->codigo == codigo)
+        {
+            i = aux.first;
+            aux.first = NULL;
+            aux.last = NULL;
+            free(i);
+        }
+        else if(aux.last->codigo == codigo)
+        {
+            i = aux.last;
+            aux.last->prev = i->prev;
+            aux.last->next = NULL;
+            free(i);
+        }
+        else
+        {
+            for(i=aux.first;i!=NULL;i = i->next)
+            {
+                if(aux.first->codigo == codigo)
+                {
+                    aux.first = aux.first->next;
+                    aux.first->prev = NULL;
+                    free(i);
+                }
+                else if(i->codigo == codigo)
+                {
+                    prev = i->prev;
+                    prev->next = i->next;
+                    free(i);
+                }
+            }
+        }
+        return aux;
+    }
+}
+
 void print_bebida(body aux)
 {
     bebida *i;
