@@ -87,6 +87,7 @@ body cadastro_bebida(body estrutura){   //Enseri o elemento na lista
 body excluir(body aux) //Exclui um elemento na lista 
 {
     int codigo;
+    scanf("%d", &codigo);
     if(verificador(aux, codigo)) //Verifica se o elemento está na lista
     {
         bebida *i, *prev, *nex;
