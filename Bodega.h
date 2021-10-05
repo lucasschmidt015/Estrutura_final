@@ -37,17 +37,9 @@ int vazio(body estrutura){
 
 int verificador(body estrutura, int codigo){
     bebida *aux;
-    if(vazio(estrutura)){
-        return 2;
-    }
     for(aux=estrutura.first;aux!=NULL;aux=aux->next){
-        if(aux->codigo==codigo){
+        if(aux->codigo==codigo)
             return 1;
-        }else if(aux->next!=codigo&&aux!=NULL){
-            continue;
-        }else{
-            return 0;
-        }
     }
     return 0;
 }
@@ -57,14 +49,24 @@ bebida *nova_bebida(body estrutura){
     int ver;
     cadastro=(bebida *)malloc(sizeof(bebida));
     printf("Digite o codigo da Bebida:\n");
-    scanf("%d",cadastro->codigo);
+    scanf("%d",&cadastro->codigo);
     ver = verificador(estrutura,cadastro->codigo);
-    while(ver!=1){
+    while(ver==1){
         printf("Codigo ja cadastrado, tente novamente\n");
-        scanf("%d",cadastro->codigo);
+        scanf("%d",&cadastro->codigo);
         ver = verificador(estrutura,cadastro->codigo);
     }
-    printf("Digite o nome da bebida:\n");   
+    printf("Digite o nome da bebida:\n");
+    scanf("%s", cadastro->name);
+    printf("Digite o volume da Bebida em ml:\n");
+    scanf("%d",&cadastro->volume);
+    printf("Digite o preco:\n");
+    scanf("%lf", &cadastro->preco);
+    cadastro->qt_estoque = 0;
+    printf("A bebida e alcoolica? [1]-Sim [2]-Nao");
+    scanf("%d", &cadastro->alcollico);
+    cadastro->next=NULL;
+    cadastro->prev=NULL;
 }
 
 
