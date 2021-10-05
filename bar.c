@@ -19,6 +19,7 @@ int main(){
         switch (menu1)
         {
         case 1:
+            beritas = cadastro_bebida(beritas);
             break;
         case 2:
             print_bebida(beritas);

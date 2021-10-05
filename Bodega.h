@@ -71,7 +71,17 @@ bebida *nova_bebida(body estrutura){
 }
 
 body cadastro_bebida(body estrutura){
-
+    bebida *cadastro;
+    cadastro = nova_bebida(estrutura);
+    if(estrutura.first==NULL){
+        estrutura.first=cadastro;
+        estrutura.last=cadastro;
+    }else{
+        cadastro->prev=estrutura.last;
+        estrutura.last->next = cadastro;
+        estrutura.last = cadastro;
+    }
+    return estrutura;
 }
 
 void print_bebida(body aux)
