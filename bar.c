@@ -19,15 +19,20 @@ int main(){
         switch (menu1)
         {
         case 1:
+            system("cls");
             beritas = cadastro_bebida(beritas);
             break;
         case 2:
+            system("cls");
             print_bebida(beritas);
             break;    
         case 3:
+            system("cls");
             buscar_bebida(beritas);
             break;
         case 4:
+            system("cls");
+            beritas = excluir(beritas);
             break;
         case 5:
             break;    
