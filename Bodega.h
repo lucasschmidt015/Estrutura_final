@@ -149,7 +149,7 @@ void buscar_bebida(body estrutura){
             return;
         }
     }
-    printf("Codigo nao encontrado\n");
+    printf("Bebida não cadastrada!\n");
 }
 
 body comprar_bebida(body estrutura){
