@@ -61,7 +61,7 @@ bebida *nova_bebida(body estrutura){
     printf("Digite o volume da Bebida em ml:\n");
     scanf("%d",&cadastro->volume);                      //Leitura de dados
     printf("Digite o preco:\n");
-    scanf("%lf", &cadastro->preco);
+    scanf("%f", &cadastro->preco);
     cadastro->qt_estoque = 0;
     printf("A bebida e alcoolica? [1]-Sim [2]-Nao");
     scanf("%d", &cadastro->alcollico);
