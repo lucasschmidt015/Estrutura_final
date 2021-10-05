@@ -151,3 +151,26 @@ void buscar_bebida(body estrutura){
     }
     printf("Codigo nao encontrado\n");
 }
+
+body comprar_bebida(body estrutura){
+    int codigo, quantidade;
+    bebida *aux;
+    printf("Digite o codigo da bebida que voce quer buscar:\n");
+    scanf("%d", &codigo);
+    for(aux=estrutura.first;aux!=NULL;aux=aux->next){
+        if(codigo==aux->codigo){
+            printf("Quantas unidades de %s voce deseja comprar\n", aux->name);
+            scanf("%d", &quantidade);
+            while(quantidade<0){
+                printf("Quantidade invalida!\n");
+                printf("Quantas unidades de %s voce deseja comprar\n", aux->name);
+                scanf("%d", &quantidade);
+            }
+            aux->qt_estoque = aux->qt_estoque + quantidade;
+            printf("Certo, %d adicionados ao estoque de %s com sucesso.\nNovo estoque de %s e de %d\n", quantidade, aux->name, aux->name, aux->qt_estoque);
+            return estrutura;
+        }
+    }
+    printf("Bebida nao encontrada!\n");
+    return estrutura;
+}

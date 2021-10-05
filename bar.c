@@ -35,6 +35,7 @@ int main(){
             beritas = excluir(beritas);
             break;
         case 5:
+            comprar_bebida(beritas);
             break;    
         case 6:
             break;
