@@ -1,5 +1,5 @@
 
-struct BEBIDA{
+struct BEBIDA{  //Cria a struct bebidas que recebe os dados do cadastro
     int codigo;
     char name[30];
     int volume;
@@ -10,12 +10,12 @@ struct BEBIDA{
 };
 typedef struct BEBIDA bebida;
 
-struct HEAD{
+struct HEAD{  //struct que aponta para o inicio e o fim da lista
     bebida *first;
     bebida *last;
 };
 typedef struct HEAD body;   
-int menu(){
+int menu(){   //Menu, ira receber um valor entre 1 e 7
     int menu1;
     printf("[1]-Cadastrar bebida\n[2]-Listar bebidas\n[3]-Buscar bebidas\n[4]-Excluir bebidas\n[5]-Comprar Bebidas\n[6]-Vender Bebidas\n[7]-Sair do Sistema\n");
     scanf("%d", &menu1);
@@ -48,19 +48,19 @@ bebida *nova_bebida(body estrutura){
     bebida *cadastro;                                                    //Função que lê uma nova bebida
     int ver;
     cadastro=(bebida *)malloc(sizeof(bebida));
-    printf("Digite o codigo da Bebida:\n");                 
+    printf("Digite o codigo da Bebida: ");                 
     scanf("%d",&cadastro->codigo);
     ver = verificador(estrutura,cadastro->codigo);              //Chama a função que verifica se o codigo já consta na lista
     while(ver==1){
-        printf("Codigo ja cadastrado, tente novamente\n");
+        printf("Codigo ja cadastrado, tente novamente");
         scanf("%d",&cadastro->codigo);
         ver = verificador(estrutura,cadastro->codigo);
     }
-    printf("Digite o nome da bebida:\n");
+    printf("Digite o nome da bebida: ");
     scanf("%s", cadastro->name);
-    printf("Digite o volume da Bebida em ml:\n");
+    printf("Digite o volume da Bebida em ml: ");
     scanf("%d",&cadastro->volume);                      //Leitura de dados
-    printf("Digite o preco:\n");
+    printf("Digite o preco: ");
     scanf("%f", &cadastro->preco);
     cadastro->qt_estoque = 0;
     printf("A bebida e alcoolica? [1]-Sim [2]-Nao");
@@ -70,8 +70,8 @@ bebida *nova_bebida(body estrutura){
     return cadastro;
 }
 
-body cadastro_bebida(body estrutura){
-    bebida *cadastro;
+body cadastro_bebida(body estrutura){   //Enseri o elemento na lista 
+    bebida *cadastro;           
     cadastro = nova_bebida(estrutura);
     if(estrutura.first==NULL){
         estrutura.first=cadastro;
@@ -84,20 +84,20 @@ body cadastro_bebida(body estrutura){
     return estrutura;
 }
 
-body excluir(body aux)
+body excluir(body aux) //Exclui um elemento na lista 
 {
     int codigo;
-    if(verificador(aux, codigo))
+    if(verificador(aux, codigo)) //Verifica se o elemento está na lista
     {
         bebida *i, *prev, *nex;
-        if(aux.first->next == NULL && aux.first->codigo == codigo)
+        if(aux.first->next == NULL && aux.first->codigo == codigo) // Se o elemento for o unico da lista
         {
-            i = aux.first;
+            i = aux.first; 
             aux.first = NULL;
             aux.last = NULL;
             free(i);
         }
-        else if(aux.last->codigo == codigo)
+        else if(aux.last->codigo == codigo) //Se o elemento for o ultimo da lista
         {
             i = aux.last;
             aux.last->prev = i->prev;
@@ -106,15 +106,15 @@ body excluir(body aux)
         }
         else
         {
-            for(i=aux.first;i!=NULL;i = i->next)
+            for(i=aux.first;i!=NULL;i = i->next) 
             {
-                if(aux.first->codigo == codigo)
+                if(aux.first->codigo == codigo) //Se o elemento for o primeiro da lista
                 {
                     aux.first = aux.first->next;
                     aux.first->prev = NULL;
                     free(i);
                 }
-                else if(i->codigo == codigo)
+                else if(i->codigo == codigo) //Se o elemento estiver no meio da lista
                 {
                     prev = i->prev;
                     prev->next = i->next;
@@ -129,7 +129,7 @@ body excluir(body aux)
 void print_bebida(body aux)
 {
     bebida *i;
-    for(i=aux.first;i!=NULL;i = i->next)
+    for(i=aux.first;i!=NULL;i = i->next) //Percorre a lista imprimindo os elementos dela
     {
         printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", i->codigo, i->name, i->volume, i->preco, i->qt_estoque, i->alcollico);
     }
