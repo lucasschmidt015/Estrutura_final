@@ -134,3 +134,17 @@ void print_bebida(body aux)
         printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", i->codigo, i->name, i->volume, i->preco, i->qt_estoque, i->alcollico);
     }
 }
+
+void buscar_bebida(body estrutura){
+    int codigo;
+    bebida *aux;
+    printf("Digite o codigo da bebida para buscar:\n");
+    scanf("%d",&codigo);
+    for(aux=estrutura.first;aux!=NULL;aux=aux->next){
+        if(aux->codigo==codigo){
+            printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", aux->codigo, aux->name, aux->volume, aux->preco, aux->qt_estoque, aux->alcollico);
+            return;
+        }
+    }
+    printf("Codigo nao encontrado\n");
+}
