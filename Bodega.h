@@ -81,45 +81,53 @@ body cadastro_bebida(body estrutura){   //Enseri o elemento na lista
         estrutura.last->next = cadastro;
         estrutura.last = cadastro;
     }
+        printf("BEBIDA CADASTRADA COM SUCESSO!");
     return estrutura;
 }
 
 body excluir(body aux) //Exclui um elemento na lista 
 {
     int codigo;
-    scanf("%d", &codigo);
-    if(verificador(aux, codigo)) //Verifica se o elemento está na lista
+    if(vazio(aux)) 
     {
-        bebida *i, *prev, *nex;
-        if(aux.first->next == NULL && aux.first->codigo == codigo) // Se o elemento for o unico da lista
+        printf("********Nenhuma bebida cadastrada********");
+    }
+    else
+    {
+        scanf("%d", &codigo);
+        if(verificador(aux, codigo)) //Verifica se o elemento está na lista
         {
-            i = aux.first; 
-            aux.first = NULL;
-            aux.last = NULL;
-            free(i);
-        }
-        else if(aux.last->codigo == codigo) //Se o elemento for o ultimo da lista
-        {
-            i = aux.last;
-            aux.last->prev = i->prev;
-            aux.last->next = NULL;
-            free(i);
-        }
-        else
-        {
-            for(i=aux.first;i!=NULL;i = i->next) 
+            bebida *i, *prev, *nex;
+            if(aux.first->next == NULL && aux.first->codigo == codigo) // Se o elemento for o unico da lista
             {
-                if(aux.first->codigo == codigo) //Se o elemento for o primeiro da lista
+                i = aux.first; 
+                aux.first = NULL;
+                aux.last = NULL;
+                free(i);
+            }
+            else if(aux.last->codigo == codigo) //Se o elemento for o ultimo da lista
+            {
+                i = aux.last;
+                aux.last = i->prev;
+                aux.last->next = NULL;
+                free(i);
+            }
+            else
+            {
+                for(i=aux.first;i!=NULL;i = i->next) 
                 {
-                    aux.first = aux.first->next;
-                    aux.first->prev = NULL;
-                    free(i);
-                }
-                else if(i->codigo == codigo) //Se o elemento estiver no meio da lista
-                {
-                    prev = i->prev;
-                    prev->next = i->next;
-                    free(i);
+                    if(aux.first->codigo == codigo) //Se o elemento for o primeiro da lista
+                    {
+                        aux.first = aux.first->next;
+                        aux.first->prev = NULL;
+                        free(i);
+                    }
+                    else if(i->codigo == codigo) //Se o elemento estiver no meio da lista
+                    {
+                        prev = i->prev;
+                        prev->next = i->next;
+                        free(i);
+                    }
                 }
             }
         }
