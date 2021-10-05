@@ -25,6 +25,7 @@ int main(){
             print_bebida(beritas);
             break;    
         case 3:
+            buscar_bebida(beritas);
             break;
         case 4:
             break;
