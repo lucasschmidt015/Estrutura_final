@@ -38,7 +38,9 @@ int main(){
                 beritas = excluir(beritas);
                 break;
             case 5:
+                system("cls");
                 comprar_bebida(beritas);
+                getch();
                 break;    
             case 6:
                 vender_bebidas(beritas);
