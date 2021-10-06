@@ -20,26 +20,26 @@ int main(){
         switch (menu1)
         {
             case 1:
-                system("cls");
-                beritas = cadastro_bebida(beritas);
-                getch();
+                system("cls"); //Limpa a tela anterior antes de chamar a funçao 
+                beritas = cadastro_bebida(beritas); //Cadastra a bebida
+                getch(); //O usuario tem que clicar uma tecla 
                 break;
             case 2:
                 system("cls");
-                print_bebida(beritas);
+                print_bebida(beritas); //Imprime todas as bebidas cadastrada 
                 getch();
                 break;    
             case 3:
                 system("cls");
-                buscar_bebida(beritas);
+                buscar_bebida(beritas); //Procura uma bebida na lista e retorna ela
                 break;
             case 4:
                 system("cls");
-                beritas = excluir(beritas);
+                beritas = excluir(beritas); //Exclui uma bebida da lista
                 break;
             case 5:
                 system("cls");
-                comprar_bebida(beritas);
+                comprar_bebida(beritas); //Ao comprar a bebida adiciona o valor comprado ao estoque
                 getch();
                 break;    
             case 6:
