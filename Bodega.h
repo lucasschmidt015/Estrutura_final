@@ -188,26 +188,26 @@ body vender_bebidas(body estrutura){
     float total;
     bebida *aux;
     printf("Digite o codigo da bebida que voce quer comprar\n");
-    scanf("%d", codigo);
+    scanf("%d", &codigo);
     for(aux=estrutura.first;aux!=NULL;aux=aux->next){
         if(aux->codigo==codigo){
             if(aux->alcollico==1){
                 printf("Digite sua idade para prosseguir: \n");
-                scanf("%d", idade);
+                scanf("%d", &idade);
                 if(idade<18){
                     printf("Voce não pode comprar essa bebida\n");
                     return estrutura;
                 }
             }
             printf("Quantas unidades voce deseja comprar: \n");
-            scanf("%d", quantidade);
+            scanf("%d", &quantidade);
             if(quantidade>aux->qt_estoque){
                 printf("Quantida indisponivel\n");
                 return estrutura;
             }
             total = aux->preco * quantidade;
             printf("Total da compra foi de: %.2f, Deseja confirmar a compra?[1]-Sim,[2]-Nao\n", total);
-            scanf("%d",confirmar);
+            scanf("%d",&confirmar);
             if(confirmar==1){
                 aux->qt_estoque = aux->qt_estoque - quantidade;
                 printf("Compra concluida!\n");
