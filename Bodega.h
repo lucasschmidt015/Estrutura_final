@@ -74,7 +74,7 @@ body cadastro_bebida(body estrutura){   //Enseri o elemento na lista
     bebida *cadastro;           
     cadastro = nova_bebida(estrutura);
     if(estrutura.first==NULL){
-        estrutura.first=cadastro;
+        estrutura.first=cadastro;       
         estrutura.last=cadastro;
     }else{
         cadastro->prev=estrutura.last;
@@ -166,7 +166,7 @@ body comprar_bebida(body estrutura){
     printf("Digite o codigo da bebida que voce quer buscar:\n");
     scanf("%d", &codigo);
     for(aux=estrutura.first;aux!=NULL;aux=aux->next){
-        if(codigo==aux->codigo){
+        if(codigo==aux->codigo){                            //se o codigo digitado estiver na lista ele le o numero de unidades e adiciona na lista
             printf("Quantas unidades de %s voce deseja comprar\n", aux->name);
             scanf("%d", &quantidade);
             while(quantidade<0){
@@ -174,7 +174,7 @@ body comprar_bebida(body estrutura){
                 printf("Quantas unidades de %s voce deseja comprar\n", aux->name);
                 scanf("%d", &quantidade);
             }
-            aux->qt_estoque = aux->qt_estoque + quantidade;
+            aux->qt_estoque = aux->qt_estoque + quantidade;         
             printf("Certo, %d adicionados ao estoque de %s com sucesso.\nNovo estoque de %s e de %d\n", quantidade, aux->name, aux->name, aux->qt_estoque);
             return estrutura;
         }
@@ -184,14 +184,14 @@ body comprar_bebida(body estrutura){
 }
 
 body vender_bebidas(body estrutura){
-    int idade, codigo, quantidade, confirmar;
+    int idade, codigo, quantidade, confirmar;       //função responsevel por vender Bebidas
     float total;
     bebida *aux;
     printf("Digite o codigo da bebida que voce quer comprar\n");
     scanf("%d", &codigo);
     for(aux=estrutura.first;aux!=NULL;aux=aux->next){
-        if(aux->codigo==codigo){
-            if(aux->alcollico==1){
+        if(aux->codigo==codigo){                                //Se o codigo digitado estiver na lista, ele verifica se essa bebida é alcoolica,
+            if(aux->alcollico==1){                              //se ela for, vai perguntar a idade do usuario, se o usuario for menor de idade a compra não sera permitida
                 printf("Digite sua idade para prosseguir: \n");
                 scanf("%d", &idade);
                 if(idade<18){
@@ -200,14 +200,14 @@ body vender_bebidas(body estrutura){
                 }
             }
             printf("Quantas unidades voce deseja comprar: \n");
-            scanf("%d", &quantidade);
+            scanf("%d", &quantidade);                               //Le a quantidade que o usuario deseja comprar
             if(quantidade>aux->qt_estoque){
-                printf("Quantida indisponivel\n");
+                printf("Quantidade indisponivel\n");                  // se a quantidade solicitada for maior que o estoque ele retorna "Quantidade indisponivel" 
                 return estrutura;
             }
             total = aux->preco * quantidade;
             printf("Total da compra foi de: %.2f, Deseja confirmar a compra?[1]-Sim,[2]-Nao\n", total);
-            scanf("%d",&confirmar);
+            scanf("%d",&confirmar);   //Por ultimo mostramos o preço e pedimos a confirmação da compra.
             if(confirmar==1){
                 aux->qt_estoque = aux->qt_estoque - quantidade;
                 printf("Compra concluida!\n");
@@ -223,7 +223,7 @@ body vender_bebidas(body estrutura){
 }
 
 void free_memoria(body estrutura){
-    bebida *aux=estrutura.first;
+    bebida *aux=estrutura.first;        //Função responsavel por desalocar a memoria da lista encadeada
     while(aux!=NULL){
         estrutura.first=estrutura.first->next;
         free(aux);
