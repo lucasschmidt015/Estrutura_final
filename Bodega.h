@@ -224,8 +224,7 @@ body vender_bebidas(body estrutura){
 
 void free_memoria(body estrutura){
     bebida *aux=estrutura.first;
-    while(aux==NULL){
-        printf("@\n");
+    while(aux!=NULL){
         estrutura.first=estrutura.first->next;
         free(aux);
         aux=estrutura.first;
