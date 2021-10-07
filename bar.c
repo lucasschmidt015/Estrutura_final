@@ -32,6 +32,7 @@ int main(){
             case 3:
                 system("cls");
                 buscar_bebida(beritas); //Procura uma bebida na lista e retorna ela
+                getch();
                 break;
             case 4:
                 system("cls");
@@ -43,7 +44,9 @@ int main(){
                 getch();
                 break;    
             case 6:
+                system("cls");
                 vender_bebidas(beritas);
+                getch();
                 break;
             default:
                 break;
