@@ -53,6 +53,6 @@ int main(){
         }
         system("cls");
     }
-    
+    free_memoria(beritas);
     return 0;
 }

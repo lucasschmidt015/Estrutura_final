@@ -221,3 +221,13 @@ body vender_bebidas(body estrutura){
     printf("Bebida não encontrada!\n");
     return estrutura;
 }
+
+void free_memoria(body estrutura){
+    bebida *aux=estrutura.first;
+    while(aux==NULL){
+        printf("@\n");
+        estrutura.first=estrutura.first->next;
+        free(aux);
+        aux=estrutura.first;
+    }
+}
