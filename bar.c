@@ -15,14 +15,13 @@ int main(){
     printf("=================================================================================\n");
     while (menu1!=7)
     {
-        
         menu1 = menu(); 
         switch (menu1)
         {
             case 1:
                 system("cls"); //Limpa a tela anterior antes de chamar a funçao 
                 beritas = cadastro_bebida(beritas); //Cadastra a bebida
-                getch(); //O usuario tem que clicar uma tecla 
+                getch(); //O usuario tem que clicar uma tecla para o programa continuar
                 break;
             case 2:
                 system("cls");
