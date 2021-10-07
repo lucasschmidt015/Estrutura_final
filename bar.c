@@ -36,6 +36,7 @@ int main(){
             case 4:
                 system("cls");
                 beritas = excluir(beritas); //Exclui uma bebida da lista
+                getch();
                 break;
             case 5:
                 system("cls");
