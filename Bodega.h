@@ -94,6 +94,7 @@ body excluir(body aux) //Exclui um elemento na lista
     }
     else
     {
+        printf("Digite o codigo de uma bebida para excluir\n");
         scanf("%d", &codigo);
         if(verificador(aux, codigo)) //Verifica se o elemento está na lista
         {
@@ -139,11 +140,17 @@ body excluir(body aux) //Exclui um elemento na lista
 void print_bebida(body aux)
 {
     bebida *i;
-    for(i=aux.first;i!=NULL;i = i->next) //Percorre a lista imprimindo os elementos dela
-    {
-        printf("************************************************************\n");
-        printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", i->codigo, i->name, i->volume, i->preco, i->qt_estoque, i->alcollico);
-        printf("************************************************************\n");
+    int vz;
+    vz=vazio(aux);
+    if(vz==1)
+        printf("lista Vazia!\n");
+    else{
+        for(i=aux.first;i!=NULL;i = i->next) //Percorre a lista imprimindo os elementos dela
+        {
+            printf("************************************************************\n");
+            printf("Codigo: %d\nBebida: %s\nVolume: %dml\nPreco: R$%.2f\nEstoque: %d\nAlcoolica: %d\n", i->codigo, i->name, i->volume, i->preco, i->qt_estoque, i->alcollico);
+            printf("************************************************************\n");
+        }
     }
 }
 
