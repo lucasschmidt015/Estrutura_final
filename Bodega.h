@@ -183,7 +183,7 @@ body comprar_bebida(body estrutura){
                 scanf("%d", &quantidade);
             }
             aux->qt_estoque = aux->qt_estoque + quantidade;         
-            printf("Certo, %d adicionados ao estoque de %s com sucesso.\nNova quantidade do estoque de e de %d\n", quantidade, aux->name, aux->name, aux->qt_estoque);
+            printf("Certo, %d adicionados ao estoque de %s com sucesso.\nNova quantidade do estoque de e de %d\n", quantidade, aux->name, aux->qt_estoque);
             return estrutura;
         }
     }
