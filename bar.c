@@ -48,8 +48,6 @@ int main(){
                 vender_bebidas(beritas);
                 getch();
                 break;
-            default:
-                break;
         }
         system("cls");
     }
