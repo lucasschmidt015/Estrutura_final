@@ -96,43 +96,52 @@ body excluir(body aux) //Exclui um elemento na lista
     {
         printf("Digite o codigo de uma bebida para excluir\n");
         scanf("%d", &codigo);
-        if(verificador(aux, codigo)) //Verifica se o elemento está na lista
+        bebida *i, *prev;
+        int cont = 0;
+        for(i=aux.first;i!=NULL;i = i->next) 
         {
-            bebida *i, *prev, *nex;
-            if(aux.first->next == NULL && aux.first->codigo == codigo) // Se o elemento for o unico da lista
+            if(aux.first->codigo == codigo)
             {
-                i = aux.first; 
-                aux.first = NULL;
-                aux.last = NULL;
-                free(i);
-            }
-            else if(aux.last->codigo == codigo) //Se o elemento for o ultimo da lista
-            {
-                i = aux.last;
-                aux.last = i->prev;
-                aux.last->next = NULL;
-                free(i);
-            }
-            else
-            {
-                for(i=aux.first;i!=NULL;i = i->next) 
+                if(aux.first->next == NULL) // Se o elemento for o unico da lista
                 {
-                    if(aux.first->codigo == codigo) //Se o elemento for o primeiro da lista
-                    {
-                        aux.first = aux.first->next;
-                        aux.first->prev = NULL;
-                        free(i);
-                    }
-                    else if(i->codigo == codigo) //Se o elemento estiver no meio da lista
-                    {
-                        prev = i->prev;
-                        prev->next = i->next;
-                        free(i);
-                    }
+                    aux.first = NULL;
+                    aux.last = NULL;
+                    cont =1;
+                    break;
+                }
+                else //Se o elemento for o primeiro da lista
+                {
+                    aux.first = aux.first->next;
+                    aux.first->prev = NULL;
+                    cont =1;
+                    break;
                 }
             }
+            else if(i->next == NULL && i->codigo == codigo) //Se o elemento for o ultimo da lista
+            {
+                aux.last = i->prev;
+                aux.last->next = NULL;
+                cont = 1;
+                break;
+            }
+            else
+            {                       
+                if(i->codigo == codigo) //Se o elemento estiver no meio da lista
+                {
+                    prev = i->prev;
+                    prev->next = i->next;
+                    prev->next->prev = i->prev;    
+                    cont = 1;
+                    break;
+                }
+            }
+        }
+        if(cont ==1)
+        {
+            free(i);
             printf("Produto excluido!\n");
         }
+        else printf("Produto nao encontrado!\n");
     }
     return aux;
 }
