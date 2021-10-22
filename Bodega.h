@@ -73,10 +73,10 @@ bebida *nova_bebida(body estrutura){
 body cadastro_bebida(body estrutura){   //Enseri o elemento na lista 
     bebida *cadastro;           
     cadastro = nova_bebida(estrutura);
-    if(estrutura.first==NULL){
+    if(estrutura.first==NULL){ //Verifica se é o primeiro elemento na lista
         estrutura.first=cadastro;       
         estrutura.last=cadastro;
-    }else{
+    }else{ //Se não for o primeiro ira cadastrar no final da lista
         cadastro->prev=estrutura.last;
         estrutura.last->next = cadastro;
         estrutura.last = cadastro;
@@ -88,7 +88,7 @@ body cadastro_bebida(body estrutura){   //Enseri o elemento na lista
 body excluir(body aux) //Exclui um elemento na lista 
 {
     int codigo;
-    if(vazio(aux)) 
+    if(vazio(aux)) //Verifica se a lista está vazia
     {
         printf("********Nenhuma bebida cadastrada********");
     }
@@ -98,9 +98,9 @@ body excluir(body aux) //Exclui um elemento na lista
         scanf("%d", &codigo);
         bebida *i, *prev;
         int cont = 0;
-        for(i=aux.first;i!=NULL;i = i->next) 
+        for(i=aux.first;i!=NULL;i = i->next)  //Percorre a lista
         {
-            if(aux.first->codigo == codigo)
+            if(aux.first->codigo == codigo) //se o produto for o primeiro da lista
             {
                 if(aux.first->next == NULL) // Se o elemento for o unico da lista
                 {
@@ -109,7 +109,7 @@ body excluir(body aux) //Exclui um elemento na lista
                     cont =1;
                     break;
                 }
-                else //Se o elemento for o primeiro da lista
+                else //Se o elemento não for o unico na lista
                 {
                     aux.first = aux.first->next;
                     aux.first->prev = NULL;
@@ -136,7 +136,7 @@ body excluir(body aux) //Exclui um elemento na lista
                 }
             }
         }
-        if(cont ==1)
+        if(cont ==1) //Verifica se o elemento foi achado dentro da lista
         {
             free(i);
             printf("Produto excluido!\n");
